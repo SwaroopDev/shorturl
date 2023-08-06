@@ -96,7 +96,7 @@
                         if(data.status == 'success'){
                             var showmsg = '<div style="background-color:cyan">Your Short Link is : <span>'+data.msg+'<span></div>';
                         } else {
-                            var showmsg = '<div style="background-color:red">Your Short Link is : <span>'+data.msg+'<span></div>';    
+                            var showmsg = '<div style="background-color:red"><span>'+data.msg+'<span></div>';    
                         }
                         $("#slink").append(showmsg);
                     },

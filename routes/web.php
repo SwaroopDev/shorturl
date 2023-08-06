@@ -39,8 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/membership/upgrade', [MembershipController::class, 'upgrade'])->name('membership.upgrade');
     Route::post('/membership/update', [MembershipController::class, 'update'])->name('membership.update');
 
-    Route::get('/url/{code}', [ShortlinkController::class, 'url'])->name('url');    
-
 });
+
+Route::get('/url/{code}', [ShortlinkController::class, 'url'])->name('url');
 
 require __DIR__.'/auth.php';

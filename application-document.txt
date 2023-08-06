@@ -1,0 +1,33 @@
+Requirements : 
+PHP version 8
+Laravel version 10
+Mysql 8
+
+Installation steps : 
+clone the repository on local
+go inside the directory using terminal
+run composer install
+run npm install
+run php artisan migrate
+enter yes to create new DB
+open new terminal and run npm run dev
+open another new terminal and run php artisan serve
+it will run on default host http://127.0.0.1:8000/ visit the same url in browser.
+
+Info : 
+There are 2 models created one is Membership and another is shortlink
+
+Membership model is responsible to tractk the users membership data such as how many links user can consume
+also user can upgrade its membership plan as well.
+
+Shortlink module is used to track the generated shortlink or we can say it handles the main logic of storing short links
+and its mapping with the actual link.
+
+Functionalities : 
+1)user can register,log in and log out.
+2)he can create short link, edit the short link details he cant edit the generated shortlink, instead he can deactivete it or delete same.
+3)user can upgrade its membership.
+4)User can see all the links created by him and click on the short link to check its working.
+To start just go to the host url and register with new user and then you can explore the rest other things.
+Note : I have used Dummy domain as url.to in this project and just showcased the functionality using url route.
+

@@ -20,9 +20,15 @@ class ShortlinkController extends Controller
      * Url redirect function
      */
     public function url($code){
-        $shortlink = Shortlink::where('shortlink', 'like', "%$code")->first();
+        $shortlink = Shortlink::where('shortlink', 'like', "%$code")
+        ->where('active','=', 1)->first();
         sleep(2);
-        return Redirect::away($shortlink->link);
+        if($shortlink){
+            return Redirect::away($shortlink->link);
+        } else {
+            abort(404);
+        }
+        
     }
 
     /**
