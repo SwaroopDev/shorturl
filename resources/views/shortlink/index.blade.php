@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h3>ShortLink Index</h3>
+                    <h3>Available Links are : {{($user->membership->available_links == -1 ) ? 'Unlimited' : $user->membership->available_links}}</h3>
                 </div><hr>
                 <div class="p-6 ">
                     

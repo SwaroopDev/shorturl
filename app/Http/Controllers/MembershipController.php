@@ -11,11 +11,16 @@ use Illuminate\Support\Facades\Auth;
 class MembershipController extends Controller
 {
     //
-
+    /**
+     * membership upgrade form
+     */
     public function upgrade(){
         return view('membership.upgrade');
     }
 
+    /**
+     * Membership update
+     */
     public function update(Request $request)
     {
         $updateData['package'] = $request->package;

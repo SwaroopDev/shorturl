@@ -16,18 +16,28 @@ class ShortlinkController extends Controller
 {
     //
 
+    /**
+     * Url redirect function
+     */
     public function url($code){
         $shortlink = Shortlink::where('shortlink', 'like', "%$code")->first();
         sleep(2);
         return Redirect::away($shortlink->link);
     }
 
+    /**
+     * Show all links of user
+     */
     public function index() : view 
     {
         $user = User::find(Auth::User()->id);
         return view('shortlink.index')->with('user',$user);
     }
 
+
+    /**
+     * Create new short link page
+     */
     public function create() : View
     {
         $avblLinks = Membership::checkAvailableLinks(Auth::user()->id);
@@ -39,6 +49,9 @@ class ShortlinkController extends Controller
         
     }
 
+    /**
+     * Store new short link
+     */
     public function store(Request $request)
     {
         $avblLinks = Membership::checkAvailableLinks(Auth::user()->id);
@@ -71,12 +84,18 @@ class ShortlinkController extends Controller
         return response()->json($response);          
     }
 
+    /**
+     * shortlin edit page
+     */
     public function edit($id) 
     {
         $data = Shortlink::find($id);
         return view('shortlink.edit_shortlink')->with('data',$data);
     }
 
+    /**
+     * Update the shortlink details
+     */
     public function update(Request $request)
     {
          $updateData['shortlink_id'] = $request->shortlink_id;
@@ -88,6 +107,7 @@ class ShortlinkController extends Controller
         
     }
 
+    /** Softdelete the link */
     public function delete(Request $request){
         $record = Shortlink::find($request->id);
         

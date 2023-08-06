@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('available_links');
+            $table->integer('user_id')->comment('users table foreign key');
+            $table->integer('available_links')->comment('no of links which user kan generate');
             $table->timestamps();
             $table->index('user_id');
         });

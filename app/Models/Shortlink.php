@@ -21,7 +21,10 @@ class Shortlink extends Model
 
     ];
 
-    
+
+    /**
+     * This function generates unique short link
+     */
     public static function getShortLink(){
         $code = substr(md5(rand()), 0, 6);
         $slink = self::DOMAIN.$code;
@@ -33,6 +36,10 @@ class Shortlink extends Model
         } 
     }
 
+
+    /**
+     * This function is responsible to store newly generated shortlink in shortlink table
+     */
     public static function createShortLink($data){
         $slink = Shortlink::getShortLink();
         $shortlink = [
@@ -45,6 +52,9 @@ class Shortlink extends Model
         return $res;
     }
 
+    /**
+     * This function updates the long link or its activation status
+     */
     public static function updateShortLink($data){
         $shortlink = Shortlink::find($data['shortlink_id']);
         $shortlink->link = $data['big_link'];

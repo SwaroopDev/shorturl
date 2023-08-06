@@ -43,11 +43,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * Membership and user relation
+     */
     public function membership()  
     {  
         return $this->hasOne('App\Models\Membership');  
     }
     
+    /**
+     * User and shortlinks relation
+     */
     public function shortlinks()
     {
         return $this->hasMany('App\Models\Shortlink');  

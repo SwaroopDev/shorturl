@@ -14,11 +14,17 @@ class Membership extends Model
         'available_links'
     ];
 
+    /**
+     * This function is responsible for user to membership mapping
+     */
     public function user()  
     {  
         return $this->belongsTo('App\Models\User');  
     }  
 
+    /**
+     * This function is responsible to create initial membership of new User
+     */
     public static function createDefaultMembership($user_id){
         $membership = [
             'user_id' => $user_id,
@@ -29,6 +35,9 @@ class Membership extends Model
         return $res;
     }
 
+    /**
+     * This function is responsible for updating existing membership
+     */
     public static function updateMembership($user_id,$data){
         $membership = Membership::where('user_id','=',$user_id)->first();
         if($membership->available_links >= 0 && $data['package'] > 0){
@@ -40,11 +49,17 @@ class Membership extends Model
         return $res;
     }
 
+    /**
+     * This function checkes id user has available links or not
+     */
     public static function checkAvailableLinks($user_id){
         $record = Membership::where('user_id',"=",$user_id)->first();
         return $record->available_links;
     }
 
+    /**
+     * This function decreases the available links count every time user creates new short link
+     */
     public static function decreamentAvailableLinks($user_id){
         $membership = Membership::where('user_id',"=",$user_id)->first();
         if($membership->available_links > 0){
